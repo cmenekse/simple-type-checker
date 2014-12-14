@@ -1,0 +1,37 @@
+%{
+#include "Node.h"
+#include "hw5.tab.h"
+%}
+%%
+\n 
+" "
+\t
+"begin"						return tBEGIN;
+"end"						return tEND;
+"if"						return tIF;
+"then"						return tTHEN;
+"else"						return tELSE;
+"while"						return tWHILE;
+"false"						return tFALSE;
+"true"						return tTRUE;
+"+"							return tPLUS;
+"*"							return tMULT;
+"<"							return tSMALLER;
+"=="						return tEQ;
+"and"						return tAND;
+"-"							return tSUB;
+"not"						return tNOT;
+";"							return tCOMMA;
+"("							return tLPAR;
+")"							return tRPAR;
+"["							return tSLPAR;
+"]"							return tSRPAR;
+"="							return tASSIGN;
+"int"						return tINT;
+"real"						return tREAL;
+"boolean"					return tBOOLEAN;
+[0-9]+ 						{yylval.value=atoi(yytext);return tINTNUM;}
+[0-9]+"."[0-9]+ 			return tREALNUM;
+[A-Za-z][A-Za-z]* 		{yylval.name=strdup(yytext);printf ("Returning %s \n" ,yytext);return tID;}
+.						
+%%

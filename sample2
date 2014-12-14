@@ -1,0 +1,1 @@
+int araba; int tren; begin araba = 72; tren=79; araba=tren + araba; end
